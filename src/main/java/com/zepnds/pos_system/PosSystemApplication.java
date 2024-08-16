@@ -33,10 +33,10 @@ public class PosSystemApplication {
 			System.out.println("Admin token: " + service.register(admin).getAccessToken());
 
 			var manager = AuthRegisterRequest.builder()
-					.firstname("Admin")
-					.lastname("Admin")
-					.email("manager@mail.com")
-					.password("password")
+					.firstname("Manager")
+					.lastname("Manager")
+					.email("zepnds@gmail.com")
+					.password("Xadminx009!@!")
 					.role(MANAGER)
 					.build();
 			System.out.println("Manager token: " + service.register(manager).getAccessToken());

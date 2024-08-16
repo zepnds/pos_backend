@@ -10,15 +10,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.ErrorResponseException;
-
+import java.util.regex.Pattern;
 import java.io.IOException;
 
 @Service
@@ -32,8 +28,12 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(AuthRegisterRequest request) {
 
+        if (!isValidEmail(request.getEmail())) {
+            throw new AuthErrorException("Invalid email format");
+        }
+
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new EmailAlreadyExistsException("Email already in use");
+            throw new AuthErrorException("Email already in use");
         }
 
         var user = User.builder()
@@ -93,6 +93,14 @@ public class AuthenticationService {
         });
         tokenRepository.saveAll(validUserTokens);
     }
+
+    private boolean isValidEmail(String email) {
+        // Regular expression for validating email addresses
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        return email != null && pattern.matcher(email).matches();
+    }
+
 
     public void refreshToken(
             HttpServletRequest request,
