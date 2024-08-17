@@ -23,9 +23,10 @@
 #        expiration: 604800000 # 7 days
 spring:
   datasource:
-    url: jdbc:postgres://postgres.hzueykrvwgvxhvdwyxfw:budgetmeal@018@aws-0-us-west-1.pooler.supabase.com:5432/postgres
-    username: postgres.hzueykrvwgvxhvdwyxfw
-    password: budgetmeal@018
+    url: jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com/postgres
+    username: postgres.vjrzniankwlnbtyhcbcc
+    password: Xadminx009!@!12345
+    port: 6543
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
