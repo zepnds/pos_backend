@@ -5,6 +5,8 @@ import com.zepnds.pos_system.user.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,11 +20,14 @@ import java.time.LocalDateTime;
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
+    private static final Logger log = LoggerFactory.getLogger(AuthenticationController.class);
     private final AuthenticationService authService;
     private final UserRepository userRepository;
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody AuthRegisterRequest request) {
+        log.info(request.getEmail());
+        log.info(request.getPassword());
         AuthenticationResponse response = authService.register(request);
         return ResponseEntity.ok(response);
     }
