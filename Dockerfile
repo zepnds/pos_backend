@@ -1,11 +1,8 @@
-FROM eclipse-temurin:17-jdk-focal
+FROM maven:3.8.5-openjdk-17 AS build
+COPY . .
+RUN mvn clean package -Pprod -DskipTests
 
-WORKDIR /app
-
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline
-
-COPY src ./src
-
-CMD ["./mvnw", "spring-boot:run"]
+FROM openjdk:17.0.1-jdk-slim
+COPY --from=build /target/pos_system-0.0.1-SNAPSHOT.jar pos_system.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","pos_system.jar"]
