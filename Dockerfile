@@ -18,4 +18,4 @@ COPY --from=build /target/mentormate-server-0.0.1-SNAPSHOT.jar pos_system.jar
 
 EXPOSE 8080
 
-ENTRYPOINT [“java”,“-jar”,“pos_system.jar”]
+ENTRYPOINT ["java","-jar", "pos_system.jar"]
