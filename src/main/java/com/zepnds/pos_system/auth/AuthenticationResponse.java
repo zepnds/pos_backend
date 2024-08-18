@@ -1,6 +1,7 @@
 package com.zepnds.pos_system.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.zepnds.pos_system.user.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,4 +16,8 @@ public class AuthenticationResponse {
     private String accessToken;
     @JsonProperty("refresh_token")
     private String refreshToken;
+    @JsonProperty("email")
+    private String email;
+    @JsonProperty("role")
+    private Role role;
 }
