@@ -3,7 +3,6 @@ package com.zepnds.pos_system.user;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@Getter
 @RequiredArgsConstructor
 public enum Permission {
 
@@ -14,7 +13,14 @@ public enum Permission {
     MANAGER_READ("management:read"),
     MANAGER_UPDATE("management:update"),
     MANAGER_CREATE("management:create"),
-    MANAGER_DELETE("management:delete");
+    MANAGER_DELETE("management:delete"),
+    MERCHANT_READ("merchant:read"),
+    MERCHANT_UPDATE("merchant:update"),
+    MERCHANT_CREATE("merchant:create"),
+    MERCHANT_DELETE("merchant:delete");
 
+    ;
+
+    @Getter
     private final String permission;
 }
