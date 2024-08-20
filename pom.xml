@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.zepnds</groupId>
-	<artifactId>security</artifactId>
+	<artifactId>pos_system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pos_system</name>
 	<description>Backend Service For Pos System</description>
