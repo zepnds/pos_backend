@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,7 +27,12 @@ public class MerchantService {
         repository.save(merchant);
        return MerchantResponse.builder().message("Business name " + request.getName() + " Successfully added").status(HttpStatus.CREATED).build();
     }
-    public List<Merchant> findAll() {
-        return repository.findAll();
+    public MerchantResponse findAll() {
+        List<Merchant> merchants = repository.findAll();
+        if(merchants.isEmpty()){
+            return MerchantResponse.builder().status(HttpStatus.NOT_FOUND).message("Business List is empty").merchants(new ArrayList<>()).build();
+        }else{
+            return MerchantResponse.builder().status(HttpStatus.OK).merchants(merchants).message("Success retrieving business list").build();
+        }
     }
 }

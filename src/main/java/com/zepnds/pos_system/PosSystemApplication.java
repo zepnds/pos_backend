@@ -11,10 +11,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
-public class PosManagementApplication {
+public class PosSystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PosManagementApplication.class, args);
+		SpringApplication.run(PosSystemApplication.class, args);
 	}
 
 	@Bean
@@ -29,6 +29,7 @@ public class PosManagementApplication {
 					.password("COREjoseph@018")
 					.role(Role.ADMIN)
 					.build();
+			System.out.println("Admin token: " + service.register(admin).getAccessToken());
 
 
 			var manager = RegisterRequest.builder()
@@ -39,7 +40,7 @@ public class PosManagementApplication {
 					.role(Role.MANAGER)
 					.build();
 
-
+			System.out.println("Manager token: " + service.register(manager).getAccessToken());
 		};
 	}
 }

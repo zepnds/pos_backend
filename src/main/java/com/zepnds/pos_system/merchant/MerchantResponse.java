@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -16,4 +18,6 @@ public class MerchantResponse {
     private String message;
     @JsonProperty("status")
     private HttpStatus status;
+    @JsonProperty("merchants")
+    private List<Merchant> merchants;
 }

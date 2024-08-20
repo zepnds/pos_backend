@@ -26,7 +26,7 @@ public class MerchantController {
     }
     @PreAuthorize("hasAuthority('merchant:create')")
     @GetMapping("/all")
-    public ResponseEntity<List<Merchant>> findAllMerchant() {
+    public ResponseEntity<MerchantResponse> findAllMerchant() {
         return ResponseEntity.ok(service.findAll());
     }
 

@@ -1,9 +1,10 @@
 spring:
   datasource:
-    url: jdbc:postgresql://pg-3a1ac706-zepnds-a78c.b.aivencloud.com:23603/defaultdb?sslmode=require
-    username: avnadmin
-    password: AVNS_YFRiT-r2A9jiryhBE_9
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://sql12.freesqldatabase.com:3306/sql12726879
+    username: sql12726879
+    password: Dt8f9K3CPV
+    port: 3306
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -11,8 +12,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
 
 application:
   security:
