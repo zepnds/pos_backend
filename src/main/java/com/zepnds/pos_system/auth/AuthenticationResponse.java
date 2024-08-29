@@ -21,4 +21,6 @@ public class AuthenticationResponse {
   private String email;
   @JsonProperty("role")
   private Role role;
+  @JsonProperty("id")
+  private Integer id;
 }

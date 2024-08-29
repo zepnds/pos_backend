@@ -1,20 +1,18 @@
 spring:
   datasource:
-    url: jdbc:mysql://sql12.freesqldatabase.com:3306/sql12726879
-    username: sql12726879
-    password: Dt8f9K3CPV
-    port: 3306
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:postgresql://localhost:5432/bm_zepnds
+    username: postgres
+    password: zepnds
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create-drop  # Options: none, update, create, create-drop, validate
     show-sql: false
     properties:
       hibernate:
         format_sql: true
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-
+    database-platform: org.hibernate.dialect.PostgreSQLDialect  # Use PostgreSQLDialect for PostgreSQL
+    database: postgresql
 application:
   security:
     jwt:

@@ -37,7 +37,7 @@ public class PosSystemApplication {
 					.lastname("Admin")
 					.email("zepnds@gmail.com")
 					.password("COREjoseph@018")
-					.role(Role.MANAGER)
+					.role(Role.MERCHANT)
 					.build();
 
 			System.out.println("Manager token: " + service.register(manager).getAccessToken());

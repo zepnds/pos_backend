@@ -1,10 +1,7 @@
 package com.zepnds.pos_system.merchant;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -19,6 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "_merchant")
 public class Merchant {
     @Id
     @GeneratedValue
@@ -26,7 +24,6 @@ public class Merchant {
     private String name;
     private String merchant_address;
     private String merchant_type;
-    @Column(unique = true)
     private String merchant_email;
 
     @CreatedDate
