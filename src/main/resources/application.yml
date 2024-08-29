@@ -1,19 +1,18 @@
 spring:
   datasource:
-    url: jdbc:postgresql://pg-3a1ac706-zepnds-a78c.b.aivencloud.com:23603/defaultdb?sslmode=require
-    username: avnadmin
-    password: AVNS_YFRiT-r2A9jiryhBE_9
+    url: jdbc:postgresql://localhost:5432/bm_zepnds
+    username: postgres
+    password: zepnds
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create-drop # Options: none, update, create, create-drop, validate
     show-sql: false
     properties:
       hibernate:
         format_sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect # Use PostgreSQLDialect for PostgreSQL
     database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-
 application:
   security:
     jwt:
