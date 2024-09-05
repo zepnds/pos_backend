@@ -22,14 +22,18 @@ public class MerchantService {
     private final MerchantRepository repository;
 
     public MerchantResponse createMerchant(MerchantRequest request) {
+
+        if (repository.existsByEmail(request.getMerchant_email())) {
+            throw new MerchantErrorException("Business email " + request.getMerchant_email() + " already registered");
+        }
         if (repository.existsByName(request.getName())) {
             throw new MerchantErrorException("Business name " + request.getName() + " already registered");
         }
         var merchant = Merchant.builder()
                 .name(request.getName())
-                .merchant_address(request.getMerchant_address())
-                .merchant_email(request.getMerchant_email())
-                .merchant_type(request.getMerchant_type())
+                .address(request.getMerchant_address())
+                .email(request.getMerchant_email())
+                .type(request.getMerchant_type())
                 .build();
         repository.save(merchant);
        return MerchantResponse.builder().message("Business name " + request.getName() + " Successfully added").status(HttpStatus.CREATED).build();
@@ -74,9 +78,9 @@ public class MerchantService {
         Merchant merchant = repository.findById(request.getId())
                 .orElseThrow(() -> new MerchantErrorException("Merchant with ID " + id + " not found"));
 
-        merchant.setMerchant_address(request.getMerchant_address());
-        merchant.setMerchant_email(request.getMerchant_email());
-        merchant.setMerchant_type(request.getMerchant_type());
+        merchant.setAddress(request.getMerchant_address());
+        merchant.setEmail(request.getMerchant_email());
+        merchant.setType(request.getMerchant_type());
         merchant.setName(request.getName());
 
         repository.save(merchant);

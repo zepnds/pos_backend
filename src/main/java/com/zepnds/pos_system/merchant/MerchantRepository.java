@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface MerchantRepository extends JpaRepository<Merchant, Integer> {
     boolean existsByName(String name);
-
+    boolean existsByEmail(String email);
     @Modifying
     @Query("DELETE FROM Merchant m WHERE m.id = :ids")
     void deleteById(@Param("ids") List<Integer> ids);
