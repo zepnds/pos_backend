@@ -6,12 +6,12 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto:  create-drop  # Options: none, update, create, create-drop, validate
+      ddl-auto: create-drop # Options: none, update, create, create-drop, validate
     show-sql: false
     properties:
       hibernate:
         format_sql: true
-    database-platform: org.hibernate.dialect.PostgreSQLDialect  # Use PostgreSQLDialect for PostgreSQL
+    database-platform: org.hibernate.dialect.PostgreSQLDialect # Use PostgreSQLDialect for PostgreSQL
     database: postgresql
 application:
   security:

@@ -31,7 +31,6 @@ public class PosSystemApplication {
 					.build();
 			System.out.println("Admin token: " + service.register(admin).getAccessToken());
 
-
 			var manager = RegisterRequest.builder()
 					.firstname("Admin")
 					.lastname("Admin")
