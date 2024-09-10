@@ -22,9 +22,9 @@ public class Merchant {
     @GeneratedValue
     private Integer id;
     private String name;
-    private String merchant_address;
-    private String merchant_type;
-    private String merchant_email;
+    private String address;
+    private String type;
+    private String email;
 
     @CreatedDate
     @Column(

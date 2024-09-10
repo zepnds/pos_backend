@@ -39,7 +39,7 @@ public class MerchantController {
 
         return ResponseEntity.ok(service.deleteMerchant(id));
     }
-    @PreAuthorize("hasAuthority('merchant:delete')")
+    @PreAuthorize("hasAuthority('merchant:update')")
     @PutMapping("/update")
     public ResponseEntity<MerchantUpdateResponse> updateMerchant(@RequestParam Integer id, @RequestBody MerchantRequest request){
         return ResponseEntity.ok(service.updateMerchant(id, request));

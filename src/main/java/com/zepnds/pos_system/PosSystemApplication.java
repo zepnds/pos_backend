@@ -44,3 +44,5 @@ public class PosSystemApplication {
 		};
 	}
 }
+
+//https://github.com/dailycodebuffer/Spring-MVC-Tutorials
