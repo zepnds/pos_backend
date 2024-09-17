@@ -51,6 +51,10 @@ public class MerchantService {
             throw new MerchantErrorException("Please provide and id");
         }
 
+        if(repository.existsById(id)){
+            throw new MerchantErrorException("Please provide and id");
+        }
+
           repository.deleteById(id);
           return MerchantDeleteResponse.builder().message("Successfully deleted ").status(HttpStatus.OK).build();
     }

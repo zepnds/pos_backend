@@ -4,6 +4,10 @@ spring:
     username: postgres.hzueykrvwgvxhvdwyxfw
     password: budgetmeal@018
     driver-class-name: org.postgresql.Driver
+    # url: jdbc:postgresql://localhost:5432/bm_zepnds
+    # username: postgres
+    # password: zepnds
+    # driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop # Options: none, update, create, create-drop, validate
