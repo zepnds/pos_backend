@@ -51,8 +51,8 @@ public class MerchantService {
             throw new MerchantErrorException("Please provide and id");
         }
 
-        if(repository.existsById(id)){
-            throw new MerchantErrorException("Please provide and id");
+        if(!repository.existsById(id)){
+            throw new MerchantErrorException("ID " + id + " is not exist");
         }
 
           repository.deleteById(id);

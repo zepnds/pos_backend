@@ -20,7 +20,7 @@ public class Branch {
     @GeneratedValue
     private Integer id;
     private String name;
-    private String company_code;
-    private String branch_address;
-    private String branch_email;
+    private Integer code;
+    private String address;
+    private String email;
 }
