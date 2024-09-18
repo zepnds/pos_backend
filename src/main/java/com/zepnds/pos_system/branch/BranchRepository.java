@@ -1,6 +1,5 @@
 package com.zepnds.pos_system.branch;
 
-import com.zepnds.pos_system.merchant.Merchant;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

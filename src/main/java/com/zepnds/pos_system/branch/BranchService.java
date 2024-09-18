@@ -3,9 +3,13 @@ package com.zepnds.pos_system.branch;
 import com.zepnds.pos_system.merchant.Merchant;
 import com.zepnds.pos_system.merchant.MerchantErrorException;
 import com.zepnds.pos_system.merchant.MerchantResponse;
+import com.zepnds.pos_system.merchant.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,4 +66,34 @@ public class BranchService {
             return BranchResponse.builder().status(HttpStatus.OK).branches(branches).message("Success retrieving business list").build();
         }
     }
+
+
+    public BranchCreateResponse updateBranch(Integer id, BranchCreateRequest request){
+        if(request.getBranch_name() == null){
+            throw new MerchantErrorException("Please provide the branch name");
+        }
+        if(request.getBranch_email() == null){
+            throw new MerchantErrorException("Please provide the branch email");
+        }
+
+        if(request.getBranch_address() == null){
+            throw new MerchantErrorException("Please provide the branch address");
+        }
+
+
+        Branch branch = repository.findById(request.getId())
+                .orElseThrow(() -> new MerchantErrorException("Branch with ID " + id + " not found"));
+
+        branch.setAddress(request.getBranch_address());
+        branch.setEmail(request.getBranch_email());
+        branch.setName(request.getBranch_name());
+
+        repository.save(branch);
+
+        return BranchCreateResponse.builder()
+                .message("Branch with the name " + request.getBranch_name() + " successfully updated")
+                .status(HttpStatus.OK)
+                .build();
+    }
+
 }
