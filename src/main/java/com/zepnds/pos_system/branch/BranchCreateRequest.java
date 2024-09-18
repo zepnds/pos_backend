@@ -9,7 +9,7 @@ import lombok.Setter;
 @Builder
 public class BranchCreateRequest {
     private Integer id;
-    private String company_code;
+    private Integer company_code;
     private String branch_address;
     private String branch_email;
     private String branch_name;
