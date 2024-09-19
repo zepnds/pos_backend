@@ -96,4 +96,17 @@ public class BranchService {
                 .build();
     }
 
+    public BranchCreateResponse deleteBranch(Integer id){
+        if(id == null){
+            throw new MerchantErrorException("Please provide and id");
+        }
+
+        if(!repository.existsById(id)){
+            throw new MerchantErrorException("ID " + id + " is not exist");
+        }
+
+        repository.deleteById(id);
+        return BranchCreateResponse.builder().message("Successfully deleted ").status(HttpStatus.OK).build();
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.zepnds.pos_system.branch;
 
 
+import com.zepnds.pos_system.merchant.MerchantDeleteResponse;
 import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -35,5 +36,12 @@ public class BranchController {
     @PutMapping("/update")
     public ResponseEntity<BranchCreateResponse> updateBranch(@RequestParam Integer id, @RequestBody BranchCreateRequest request){
         return ResponseEntity.ok(service.updateBranch(id, request));
+    }
+
+    @PreAuthorize("hasAuthority('merchant:delete')")
+    @DeleteMapping("/delete")
+    public ResponseEntity<BranchCreateResponse> deleteMerchant(@RequestParam Integer id) {
+
+        return ResponseEntity.ok(service.deleteBranch(id));
     }
 }
