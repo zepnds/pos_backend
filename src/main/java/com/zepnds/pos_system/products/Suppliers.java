@@ -1,22 +1,23 @@
 package com.zepnds.pos_system.products;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@DiscriminatorValue("S")
 @Table(name = "_product_supplier")
-public class Suppliers {
+public class Suppliers extends Product {
     private Integer id;
     @Column(nullable = false)
     private String supplier_name;

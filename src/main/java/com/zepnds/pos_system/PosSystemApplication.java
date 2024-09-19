@@ -2,6 +2,7 @@ package com.zepnds.pos_system;
 
 import com.zepnds.pos_system.auth.AuthenticationService;
 import com.zepnds.pos_system.auth.RegisterRequest;
+import com.zepnds.pos_system.products.CategoryRepository;
 import com.zepnds.pos_system.user.Role;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,19 +20,22 @@ public class PosSystemApplication {
 
 	@Bean
 	public CommandLineRunner commandLineRunner(
-			AuthenticationService service
+			AuthenticationService service,
+			CategoryRepository repository
 	) {
+
+
 		return args -> {
-			var admin = RegisterRequest.builder()
+			 RegisterRequest.builder()
 					.firstname("Admin")
 					.lastname("Admin")
 					.email("sojda018@gmail.com")
 					.password("COREjoseph@018")
 					.role(Role.ADMIN)
 					.build();
-			System.out.println("Admin token: " + service.register(admin).getAccessToken());
 
-			var manager = RegisterRequest.builder()
+
+			 RegisterRequest.builder()
 					.firstname("Admin")
 					.lastname("Admin")
 					.email("zepnds@gmail.com")
@@ -39,7 +43,7 @@ public class PosSystemApplication {
 					.role(Role.MERCHANT)
 					.build();
 
-			System.out.println("Manager token: " + service.register(manager).getAccessToken());
+
 		};
 	}
 }

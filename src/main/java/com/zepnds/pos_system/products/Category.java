@@ -1,20 +1,20 @@
 package com.zepnds.pos_system.products;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@DiscriminatorValue("C")
 @Table(name = "_product_category")
-public class Category {
+public class Category extends Product {
     @GeneratedValue
     @Id
     private Integer id;
