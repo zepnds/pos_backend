@@ -2,39 +2,43 @@ package com.zepnds.pos_system.products;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
-
-import java.time.LocalDateTime;
 
 @Data
-@SuperBuilder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "product_type")
-@Table(name = "_product")
+@Inheritance
+@NamedQueries({
+        @NamedQuery(name = "Product.findByNamedQuery", query = "select a from Product a where a.price >= :price"),
+        @NamedQuery(name = "Product.updateByNamedQuery", query = "update Product a set a.price = :price where a.id =:id")
+})
+
 public class Product {
     @Id
     @GeneratedValue
     private Integer id;
-    @Column(name = "product_name")
+    @Column(name = "product_name",nullable = true)
     private String name;
-    @Column(name = "product_price")
+    @Column(name = "product_price",nullable = true)
     private Long price;
-    @Column(nullable = false, unique = true)
+    @Column( unique = true,nullable = true)
     private String barcode;
-    @Column(nullable = false, unique = true)
+    @Column( nullable = true)
     private String sku;
+    @Column(nullable = true)
     private String description;
-    private Integer category_id;
+    @Column(nullable = true)
     private Long quantity_in_stock;
-    private Integer supplier_id;
+    @Column(nullable = true)
     private Boolean is_active;
-    @Column(updatable = false , nullable = false)
-    private LocalDateTime created_at;
-    @Column(insertable = false)
-    private LocalDateTime updated_at;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private  Category category;
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
+    private  Suppliers supplier;
 }

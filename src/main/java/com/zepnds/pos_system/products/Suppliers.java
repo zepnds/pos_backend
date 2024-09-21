@@ -1,29 +1,22 @@
 package com.zepnds.pos_system.products;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
-
-@EqualsAndHashCode(callSuper = true)
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@DiscriminatorValue("S")
-@Table(name = "_product_supplier")
-public class Suppliers extends Product {
+public class Suppliers {
+    @Id
+    @GeneratedValue
     private Integer id;
     @Column(nullable = false)
     private String supplier_name;
     private String contact_info;
-    @Column(updatable = false , nullable = false)
-    private LocalDateTime created_at;
-    @Column(insertable = false)
-    private LocalDateTime updated_at;
+    @OneToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 }

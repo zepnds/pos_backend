@@ -2,6 +2,7 @@ package com.zepnds.pos_system;
 
 import com.zepnds.pos_system.auth.AuthenticationService;
 import com.zepnds.pos_system.auth.RegisterRequest;
+import com.zepnds.pos_system.products.Category;
 import com.zepnds.pos_system.products.CategoryRepository;
 import com.zepnds.pos_system.user.Role;
 import org.springframework.boot.CommandLineRunner;
@@ -20,8 +21,8 @@ public class PosSystemApplication {
 
 	@Bean
 	public CommandLineRunner commandLineRunner(
-			AuthenticationService service,
-			CategoryRepository repository
+			AuthenticationService service
+//			CategoryRepository repository
 	) {
 
 
@@ -43,7 +44,8 @@ public class PosSystemApplication {
 					.role(Role.MERCHANT)
 					.build();
 
-
+//				var category = Category.builder().category_name("Digital").build();
+//				repository.save(category);
 		};
 	}
 }
