@@ -35,9 +35,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDto> findAllProducts(Integer branchCode) {
         List<Product> products = productRepository.findAllProductsByBranchCode(branchCode);
-        ProductDto dto = new ProductDto();
-        return products.stream().map(product -> {
 
+        return products.stream().map(product -> {
+            ProductDto dto = new ProductDto();
             dto.setId(product.getId());
             dto.setName(product.getName());
             dto.setSku(product.getSku());

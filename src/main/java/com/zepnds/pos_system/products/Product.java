@@ -25,19 +25,15 @@ public class Product {
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "product_name",nullable = true)
+    @Column(name = "product_name")
     private String name;
-    @Column(name = "product_price",nullable = true)
+    @Column(name = "product_price")
     private Long price;
-    @Column( unique = true,nullable = true)
+    @Column( unique = true)
     private String barcode;
-    @Column( nullable = true)
     private String sku;
-    @Column(nullable = true)
     private String description;
-    @Column(nullable = true)
     private Long quantity_in_stock;
-    @Column(nullable = true)
     private Boolean is_active;
     @Column(name = "branch_code")
     private Integer branchCode;
