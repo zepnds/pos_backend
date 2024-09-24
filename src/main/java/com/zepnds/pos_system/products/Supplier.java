@@ -4,19 +4,22 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Suppliers {
+public class Supplier {
     @Id
     @GeneratedValue
     private Integer id;
     @Column(nullable = false)
     private String supplier_name;
     private String contact_info;
-    @OneToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+
+@ManyToMany(mappedBy = "suppliers", fetch = FetchType.LAZY) // Set to LAZY
+private List<Product> products = new ArrayList<>();
 }

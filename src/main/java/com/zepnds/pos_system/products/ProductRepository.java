@@ -15,10 +15,12 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     int updateProduct(@Param("name") String name, @Param("id") Integer id);
 
     @Transactional
-    List<Product> findByNamedQuery(@Param("price") Integer price);
+    @Query("select a from Product a where a.branchCode =:branchCode")
+    List<Product> findAllProductsByBranchCode(@Param("branchCode") Integer branchCode);
 
     @Modifying
     @Transactional
-    @Query("update Product a set a.name = :age where a.id =:id")
+    @Query("update Product a set a.name = :name where a.id =:id")
     void updateByNamedQuery(@Param("name") String name, @Param("id") Integer id);
 }
+

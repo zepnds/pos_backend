@@ -2,8 +2,7 @@ package com.zepnds.pos_system;
 
 import com.zepnds.pos_system.auth.AuthenticationService;
 import com.zepnds.pos_system.auth.RegisterRequest;
-import com.zepnds.pos_system.products.Category;
-import com.zepnds.pos_system.products.CategoryRepository;
+import com.zepnds.pos_system.products.*;
 import com.zepnds.pos_system.user.Role;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,33 +20,42 @@ public class PosSystemApplication {
 
 	@Bean
 	public CommandLineRunner commandLineRunner(
-			AuthenticationService service
-//			CategoryRepository repository
+		AuthenticationService service,
+		CategoryRepository categoryRepository,
+		SupplierRepository supplierRepository
 	) {
 
 
 		return args -> {
-			 RegisterRequest.builder()
+			var admin = RegisterRequest.builder()
 					.firstname("Admin")
 					.lastname("Admin")
 					.email("sojda018@gmail.com")
 					.password("COREjoseph@018")
 					.role(Role.ADMIN)
 					.build();
+		 	service.register(admin);
 
-
-			 RegisterRequest.builder()
+			var merchant =  RegisterRequest.builder()
 					.firstname("Admin")
 					.lastname("Admin")
 					.email("zepnds@gmail.com")
 					.password("COREjoseph@018")
 					.role(Role.MERCHANT)
 					.build();
+			service.register(merchant);
 
-//				var category = Category.builder().category_name("Digital").build();
-//				repository.save(category);
+			Category category = new Category();
+			Supplier supplier = new Supplier();
+
+			category.setCategory_name("sample category");
+			supplier.setSupplier_name("sample supplier");
+			supplier.setContact_info("09615290648");
+			categoryRepository.save(category);
+			supplierRepository.save(supplier);
 		};
 	}
+
 }
 
 //https://github.com/dailycodebuffer/Spring-MVC-Tutorials

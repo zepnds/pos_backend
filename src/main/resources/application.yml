@@ -10,7 +10,7 @@ spring:
      driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update # Options: none, update, create, create-drop, validate
+      ddl-auto: create-drop # Options: none, update, create, create-drop, validate
     show-sql: false
     properties:
       hibernate:

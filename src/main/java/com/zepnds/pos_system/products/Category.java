@@ -3,6 +3,8 @@ package com.zepnds.pos_system.products;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Data
@@ -17,8 +19,8 @@ public class Category  {
     private Integer id;
     @Column(nullable = false)
     private String category_name;
-    @OneToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY) // Set to LAZY
+    private List<Product> products = new ArrayList<>();
 
 }
