@@ -1,13 +1,17 @@
 package com.zepnds.pos_system.products.impl;
 
+import com.zepnds.pos_system.merchant.MerchantDeleteResponse;
+import com.zepnds.pos_system.merchant.MerchantErrorException;
 import com.zepnds.pos_system.products.*;
 import com.zepnds.pos_system.products.converter.ProductConverter;
 import com.zepnds.pos_system.products.exception.ProductErrorCreateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,5 +63,45 @@ public class ProductServiceImpl implements ProductService {
         }).collect(Collectors.toList());
     }
 
+    @Override
+    public String deleteProduct(Integer id){
 
+        if(id == null){
+            throw new MerchantErrorException("Product id is required");
+        }
+
+        Optional<Product> product = productRepository.findById(id);
+        if(product.isEmpty()){
+            throw new MerchantErrorException("Product cannot be found");
+        }
+
+        productRepository.deleteProduct(id);
+
+        return "Successfully delete";
+    }
+
+    @Override
+    public ProductDto updateProduct(ProductDto productDto, Integer id){
+        Optional<Product> checkProduct = productRepository.findById(id);
+        if(checkProduct.isEmpty()){
+            throw new MerchantErrorException("Product cannot be found");
+        }
+
+        ProductDto dto = null;
+        Optional<Product> product = productRepository.findById(id);
+        if(product.isPresent()){
+            Product product1 = product.get();
+            product1.setName(productDto.getName());
+            product1.setDescription(productDto.getDescription());
+            product1.setCategories(productDto.getCategory());
+            product1.setSuppliers(productDto.getSupplier());
+            product1.setSku(productDto.getSku());
+            product1.setBarcode(productDto.getBarcode());
+            product1.setBranchCode(productDto.getBranchCode());
+            dto = productConverter.convertProducttoDto(product1);
+            productRepository.save(product1);
+            return dto;
+        }
+        throw new MerchantErrorException("Product cannot be found");
+    }
 }

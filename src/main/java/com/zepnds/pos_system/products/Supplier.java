@@ -20,6 +20,6 @@ public class Supplier {
     private String supplier_name;
     private String contact_info;
 
-@ManyToMany(mappedBy = "suppliers", fetch = FetchType.LAZY) // Set to LAZY
+@ManyToMany(mappedBy = "suppliers", fetch = FetchType.LAZY)
 private List<Product> products = new ArrayList<>();
 }

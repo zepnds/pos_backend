@@ -8,7 +8,7 @@ spring:
 #     username: postgres
 #     password: 1234
 #     driver-class-name: org.postgresql.Driver
-#  jpa:
+  jpa:
     hibernate:
       ddl-auto: create-drop # Options: none, update, create, create-drop, validate
     show-sql: false
