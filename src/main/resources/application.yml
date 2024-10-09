@@ -7,7 +7,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/bm_zepnds
     username: postgres
     password: 1234
-    driver-class-name: org.postgresql.jdbc.Driver
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop # Options: none, update, create, create-drop, validate
