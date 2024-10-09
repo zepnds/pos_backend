@@ -137,6 +137,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>pos_system</finalName>
 	</build>
 
 </project>
