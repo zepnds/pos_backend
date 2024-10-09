@@ -1,10 +1,10 @@
-package com.zepnds.business_management;
+package com.zepnds.pos_system;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BusinessManagementApplicationTests {
+class PosSystemApplicationTests {
 
 	@Test
 	void contextLoads() {
