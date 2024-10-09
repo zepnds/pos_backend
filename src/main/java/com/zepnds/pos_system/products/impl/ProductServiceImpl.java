@@ -56,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
                     .map(Supplier::getSupplier_name)
                     .toList();
             List<String> categoryNames = product.getCategories().stream()
-                    .map(Category::getCategoryName)
+                    .map(Category::getCategory_name)
                     .toList();
             dto.setCategoryList(categoryNames);
             dto.setSupplierList(SupplierNames);

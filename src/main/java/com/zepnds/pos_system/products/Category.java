@@ -18,8 +18,7 @@ public class Category  {
     @Id
     private Integer id;
     @Column(nullable = false)
-    private String categoryName;
-    private Integer companyCode;
+    private String category_name;
     @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY) // Set to LAZY
     private List<Product> products = new ArrayList<>();
 

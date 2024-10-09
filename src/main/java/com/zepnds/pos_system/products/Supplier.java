@@ -17,7 +17,6 @@ public class Supplier {
     @GeneratedValue
     private Integer id;
     @Column(nullable = false)
-    private Integer companyCode;
     private String supplier_name;
     private String contact_info;
 

@@ -4,9 +4,9 @@ spring:
     #    username: postgres.hzueykrvwgvxhvdwyxfw
     #    password: budgetmeal@018
     #    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/zepnds_db
+    url: jdbc:postgresql://localhost:5432/bm_zepnds
     username: postgres
-    password: zepnds
+    password: 1234
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
