@@ -19,6 +19,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("select a from Product a where a.branchCode =:branchCode")
     List<Product> findAllProductsByBranchCode(@Param("branchCode") Integer branchCode);
 
+
     @Modifying
     @Transactional
     @Query("update Product a set a.name = :name where a.id =:id")

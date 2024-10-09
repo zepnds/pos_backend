@@ -45,6 +45,7 @@ public class ProductServiceImpl implements ProductService {
             dto.setId(product.getId());
             dto.setName(product.getName());
             dto.setSku(product.getSku());
+            dto.setCompanyCode(product.getCompanyCode());
             dto.setQuantity_in_stock(product.getQuantity_in_stock());
             dto.setIs_active(product.getIs_active());
             dto.setPrice(product.getPrice());
@@ -55,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
                     .map(Supplier::getSupplier_name)
                     .toList();
             List<String> categoryNames = product.getCategories().stream()
-                    .map(Category::getCategory_name)
+                    .map(Category::getCategoryName)
                     .toList();
             dto.setCategoryList(categoryNames);
             dto.setSupplierList(SupplierNames);
@@ -90,18 +91,25 @@ public class ProductServiceImpl implements ProductService {
         ProductDto dto = null;
         Optional<Product> product = productRepository.findById(id);
         if(product.isPresent()){
-            Product product1 = product.get();
-            product1.setName(productDto.getName());
-            product1.setDescription(productDto.getDescription());
-            product1.setCategories(productDto.getCategory());
-            product1.setSuppliers(productDto.getSupplier());
-            product1.setSku(productDto.getSku());
-            product1.setBarcode(productDto.getBarcode());
-            product1.setBranchCode(productDto.getBranchCode());
+            Product product1 = getProduct(productDto, product);
+
             dto = productConverter.convertProducttoDto(product1);
             productRepository.save(product1);
             return dto;
         }
         throw new MerchantErrorException("Product cannot be found");
+    }
+
+    private static Product getProduct(ProductDto productDto, Optional<Product> product) {
+        Product product1 = product.get();
+        product1.setName(productDto.getName());
+        product1.setDescription(productDto.getDescription());
+        product1.setCategories(productDto.getCategory());
+        product1.setSuppliers(productDto.getSupplier());
+        product1.setSku(productDto.getSku());
+        product1.setBarcode(productDto.getBarcode());
+        product1.setCompanyCode(productDto.getCompanyCode());
+        product1.setBranchCode(productDto.getBranchCode());
+        return product1;
     }
 }

@@ -20,12 +20,14 @@ public class ProductConverter {
                 .suppliers(productDto.getSupplier())
                 .categories(productDto.getCategory())
                 .is_active(productDto.getIs_active())
+                .companyCode(productDto.getCompanyCode())
                 .build();
     }
 
     public ProductDto convertProducttoDto(Product product){
         ProductDto productDto =  new ProductDto();
         productDto.setId(product.getId());
+        productDto.setCompanyCode(product.getCompanyCode());
         productDto.setName(product.getName());
         productDto.setBarcode(product.getBarcode());
         productDto.setDescription(product.getDescription());

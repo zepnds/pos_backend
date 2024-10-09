@@ -24,7 +24,7 @@ public class Product {
     @Id
     @GeneratedValue
     private Integer id;
-
+    
     @Column(name = "product_name")
     private String name;
     @Column(name = "product_price")
@@ -37,7 +37,7 @@ public class Product {
     private Boolean is_active;
     @Column(name = "branch_code")
     private Integer branchCode;
-
+    private Integer companyCode;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

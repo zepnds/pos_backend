@@ -21,4 +21,5 @@ public class ProductDto {
     private Boolean is_active;
     private List<String> categoryList;
     private List<String> supplierList;
+    private Integer companyCode;
 }

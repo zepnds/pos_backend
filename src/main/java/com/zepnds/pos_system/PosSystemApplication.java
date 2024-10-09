@@ -2,7 +2,10 @@ package com.zepnds.pos_system;
 
 import com.zepnds.pos_system.auth.AuthenticationService;
 import com.zepnds.pos_system.auth.RegisterRequest;
-import com.zepnds.pos_system.products.*;
+import com.zepnds.pos_system.products.Category;
+import com.zepnds.pos_system.products.CategoryRepository;
+import com.zepnds.pos_system.products.Supplier;
+import com.zepnds.pos_system.products.SupplierRepository;
 import com.zepnds.pos_system.user.Role;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
